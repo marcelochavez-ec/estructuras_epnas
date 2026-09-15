@@ -1,0 +1,11 @@
+02_data/
+03_configuraciones/config.yml
+
+__pycache__/
+*.py[cod]
+*.log
+
+.env
+.Rhistory
+.RData
+.Rproj.user/

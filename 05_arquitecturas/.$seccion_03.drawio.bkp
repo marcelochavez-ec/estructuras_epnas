@@ -1,0 +1,142 @@
+<mxfile host="Electron" modified="2026-09-15T20:30:00.000Z" agent="ChatGPT" version="24.7.17" type="device" pages="2">
+  <diagram name="01_modelo_logico_s03" id="logic-s03-v3">
+    <mxGraphModel dx="1200" dy="720" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="720" math="0" shadow="0" background="#FFFFFF">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <mxCell id="L_header" value="&lt;b&gt;epnas · sección s03&lt;/b&gt;   |   modelo lógico" style="rounded=1;absoluteArcSize=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#243C8F;strokeColor=#243C8F;fontColor=#FFFFFF;fontSize=18;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=18;" vertex="1" parent="1">
+          <mxGeometry x="30" y="25" width="1140" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="L_sub" value="acceso y movilización · definición del dato que ingresa desde el formulario web y su flujo lógico" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#667085;fontSize=10;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="45" y="92" width="1110" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="L_input" value="&lt;b&gt;&lt;font color=&quot;#243C8F&quot; size=&quot;4&quot;&gt;1. entrada de datos s03&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;
+&lt;table border=&quot;0&quot; cellpadding=&quot;4&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot;&gt;
+&lt;tr&gt;&lt;td&gt;&lt;b&gt;campo&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;control web&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;formato que ingresa&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;regla&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;s03_am01&lt;/td&gt;&lt;td&gt;select&lt;/td&gt;&lt;td&gt;id_opcion&lt;/td&gt;&lt;td&gt;3 opciones&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;s03_am02&lt;/td&gt;&lt;td&gt;select&lt;/td&gt;&lt;td&gt;id_opcion&lt;/td&gt;&lt;td&gt;4 opciones&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;s03_am03&lt;/td&gt;&lt;td&gt;select&lt;/td&gt;&lt;td&gt;id_opcion&lt;/td&gt;&lt;td&gt;3 opciones&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;s03_am04&lt;/td&gt;&lt;td&gt;select&lt;/td&gt;&lt;td&gt;id_opcion&lt;/td&gt;&lt;td&gt;2 opciones&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;s03_am05&lt;/td&gt;&lt;td&gt;number&lt;/td&gt;&lt;td&gt;decimal en horas&lt;/td&gt;&lt;td&gt;valor &amp;gt;= 0&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;s03_am06&lt;/td&gt;&lt;td&gt;select&lt;/td&gt;&lt;td&gt;id_opcion&lt;/td&gt;&lt;td&gt;3 opciones&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;br&gt;&lt;b&gt;criterio:&lt;/b&gt; los campos select no reciben texto libre; reciben el identificador de una opción activa del catálogo." style="rounded=1;absoluteArcSize=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#F7F9FC;strokeColor=#4D6CB3;strokeWidth=1.2;fontColor=#172033;fontSize=9;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="45" y="135" width="555" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="L_meta" value="&lt;b&gt;&lt;font color=&quot;#243C8F&quot; size=&quot;4&quot;&gt;2. definición que construye el formulario&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;
+&lt;b&gt;formulario_variable&lt;/b&gt;&lt;br&gt;
+variable · descripcion · tipo_control · unidad_medida · obligatorio · orden · validacion_json · activo&lt;br&gt;&lt;br&gt;
+&lt;b&gt;formulario_opcion&lt;/b&gt;&lt;br&gt;
+id_opcion · variable · codigo · descripcion · nivel_accesibilidad · orden · activo&lt;br&gt;&lt;br&gt;
+django usa estas dos estructuras para crear cada control y cargar sus opciones." style="rounded=1;absoluteArcSize=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FAFAFB;strokeColor=#98A2B3;strokeWidth=1.1;fontColor=#172033;fontSize=9;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="640" y="135" width="515" height="215" as="geometry" />
+        </mxCell>
+        <mxCell id="L_output" value="&lt;b&gt;&lt;font color=&quot;#4F7E39&quot; size=&quot;4&quot;&gt;3. salida lógica de s03&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;
+&lt;b&gt;una respuesta s03 por formulario epnas&lt;/b&gt;&lt;br&gt;&lt;br&gt;
+s03_am01 → id_opcion&lt;br&gt;
+s03_am02 → id_opcion&lt;br&gt;
+s03_am03 → id_opcion&lt;br&gt;
+s03_am04 → id_opcion&lt;br&gt;
+s03_am05 → número decimal en horas&lt;br&gt;
+s03_am06 → id_opcion&lt;br&gt;&lt;br&gt;
+los cinco campos categóricos se validan contra formulario_opcion antes de guardar." style="rounded=1;absoluteArcSize=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#F7FBF4;strokeColor=#6C9A52;strokeWidth=1.2;fontColor=#172033;fontSize=9;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="640" y="380" width="515" height="245" as="geometry" />
+        </mxCell>
+        <mxCell id="L_e1" value="renderiza" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.2;strokeColor=#667085;fontColor=#475467;fontSize=9;startArrow=none;endArrow=block;endFill=1;" edge="1" parent="1" source="L_meta" target="L_input">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L_e2" value="submit" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.2;strokeColor=#667085;fontColor=#475467;fontSize=9;startArrow=none;endArrow=block;endFill=1;" edge="1" parent="1" source="L_input" target="L_output">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L_note" value="&lt;b&gt;patrón para epnas:&lt;/b&gt; la definición del formulario es global y reutilizable; cada sección solo aporta sus campos y su tabla de respuestas. no se crea una tabla de catálogo nueva por cada ítem." style="rounded=1;absoluteArcSize=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#D0D5DD;strokeWidth=1;fontColor=#475467;fontSize=9;align=left;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="45" y="650" width="1110" height="48" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="02_modelo_fisico_s03" id="physical-s03-v3">
+    <mxGraphModel dx="1200" dy="740" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="740" math="0" shadow="0" background="#FFFFFF">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <mxCell id="P_header" value="&lt;b&gt;epnas · sección s03&lt;/b&gt;   |   modelo físico" style="rounded=1;absoluteArcSize=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#243C8F;strokeColor=#243C8F;fontColor=#FFFFFF;fontSize=18;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=18;" vertex="1" parent="1">
+          <mxGeometry x="30" y="25" width="1140" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="P_sub" value="django + postgresql · tablas persistentes, tipos de datos, llaves y validaciones de la sección s03" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#667085;fontSize=10;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="45" y="92" width="1110" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="P_var" value="&lt;b&gt;&lt;font color=&quot;#243C8F&quot; size=&quot;4&quot;&gt;formulario_variable&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;
+&lt;b&gt;pk&lt;/b&gt; variable · varchar(30)&lt;br&gt;
+seccion · varchar(10)&lt;br&gt;
+descripcion · varchar(255)&lt;br&gt;
+tipo_control · varchar(20)&lt;br&gt;
+unidad_medida · varchar(30) null&lt;br&gt;
+obligatorio · boolean&lt;br&gt;
+orden · smallint&lt;br&gt;
+validacion_json · jsonb&lt;br&gt;
+activo · boolean" style="rounded=1;absoluteArcSize=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#F7F9FC;strokeColor=#4D6CB3;strokeWidth=1.2;fontColor=#172033;fontSize=9;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="45" y="135" width="255" height="255" as="geometry" />
+        </mxCell>
+        <mxCell id="P_opt" value="&lt;b&gt;&lt;font color=&quot;#243C8F&quot; size=&quot;4&quot;&gt;formulario_opcion&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;
+&lt;b&gt;pk&lt;/b&gt; id_opcion · varchar(40)&lt;br&gt;
+&lt;b&gt;fk&lt;/b&gt; variable · varchar(30)&lt;br&gt;
+codigo · smallint&lt;br&gt;
+descripcion · varchar(150)&lt;br&gt;
+nivel_accesibilidad · varchar(30)&lt;br&gt;
+orden · smallint&lt;br&gt;
+activo · boolean&lt;br&gt;&lt;br&gt;
+&lt;b&gt;unique&lt;/b&gt; (variable, codigo)" style="rounded=1;absoluteArcSize=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FAFAFB;strokeColor=#98A2B3;strokeWidth=1.1;fontColor=#172033;fontSize=9;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="330" y="135" width="260" height="255" as="geometry" />
+        </mxCell>
+        <mxCell id="P_form" value="&lt;b&gt;&lt;font color=&quot;#243C8F&quot; size=&quot;4&quot;&gt;epnas_formulario&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;
+&lt;b&gt;pk&lt;/b&gt; id_formulario · uuid&lt;br&gt;
+usuario_id · bigint&lt;br&gt;
+unicodigo · varchar(20)&lt;br&gt;
+estado · varchar(20)&lt;br&gt;
+fecha_registro · timestamptz&lt;br&gt;
+fecha_actualizacion · timestamptz" style="rounded=1;absoluteArcSize=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#F7F9FC;strokeColor=#4D6CB3;strokeWidth=1.2;fontColor=#172033;fontSize=9;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="620" y="135" width="250" height="205" as="geometry" />
+        </mxCell>
+        <mxCell id="P_resp" value="&lt;b&gt;&lt;font color=&quot;#4F7E39&quot; size=&quot;4&quot;&gt;respuesta_s03&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;
+&lt;b&gt;pk/fk&lt;/b&gt; id_formulario · uuid&lt;br&gt;
+&lt;b&gt;fk&lt;/b&gt; s03_am01 · varchar(40)&lt;br&gt;
+&lt;b&gt;fk&lt;/b&gt; s03_am02 · varchar(40)&lt;br&gt;
+&lt;b&gt;fk&lt;/b&gt; s03_am03 · varchar(40)&lt;br&gt;
+&lt;b&gt;fk&lt;/b&gt; s03_am04 · varchar(40)&lt;br&gt;
+s03_am05 · numeric(6,2)&lt;br&gt;
+&lt;b&gt;fk&lt;/b&gt; s03_am06 · varchar(40)&lt;br&gt;
+creado_en · timestamptz&lt;br&gt;
+actualizado_en · timestamptz&lt;br&gt;&lt;br&gt;
+&lt;b&gt;check&lt;/b&gt; s03_am05 &amp;gt;= 0" style="rounded=1;absoluteArcSize=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#F7FBF4;strokeColor=#6C9A52;strokeWidth=1.2;fontColor=#172033;fontSize=9;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="900" y="135" width="255" height="255" as="geometry" />
+        </mxCell>
+        <mxCell id="P_e1" value="1 : n" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.2;strokeColor=#667085;fontColor=#475467;fontSize=9;startArrow=none;endArrow=block;endFill=1;" edge="1" parent="1" source="P_var" target="P_opt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P_e2" value="1 : 1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.2;strokeColor=#667085;fontColor=#475467;fontSize=9;startArrow=none;endArrow=block;endFill=1;" edge="1" parent="1" source="P_form" target="P_resp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P_e3" value="fk de opciones" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.2;strokeColor=#667085;fontColor=#475467;fontSize=9;startArrow=none;endArrow=block;endFill=1;" edge="1" parent="1" source="P_opt" target="P_resp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P_map" value="&lt;b&gt;&lt;font color=&quot;#8A6500&quot; size=&quot;4&quot;&gt;mapeo s03 → bdd&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;
+&lt;table border=&quot;0&quot; cellpadding=&quot;4&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot;&gt;
+&lt;tr&gt;&lt;td&gt;&lt;b&gt;campo&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;entrada web&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;columna destino&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;integridad&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;s03_am01&lt;/td&gt;&lt;td&gt;select / id_opcion&lt;/td&gt;&lt;td&gt;respuesta_s03.s03_am01&lt;/td&gt;&lt;td&gt;fk → formulario_opcion&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;s03_am02&lt;/td&gt;&lt;td&gt;select / id_opcion&lt;/td&gt;&lt;td&gt;respuesta_s03.s03_am02&lt;/td&gt;&lt;td&gt;fk → formulario_opcion&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;s03_am03&lt;/td&gt;&lt;td&gt;select / id_opcion&lt;/td&gt;&lt;td&gt;respuesta_s03.s03_am03&lt;/td&gt;&lt;td&gt;fk → formulario_opcion&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;s03_am04&lt;/td&gt;&lt;td&gt;select / id_opcion&lt;/td&gt;&lt;td&gt;respuesta_s03.s03_am04&lt;/td&gt;&lt;td&gt;fk → formulario_opcion&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;s03_am05&lt;/td&gt;&lt;td&gt;number / decimal&lt;/td&gt;&lt;td&gt;respuesta_s03.s03_am05&lt;/td&gt;&lt;td&gt;check &amp;gt;= 0&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;s03_am06&lt;/td&gt;&lt;td&gt;select / id_opcion&lt;/td&gt;&lt;td&gt;respuesta_s03.s03_am06&lt;/td&gt;&lt;td&gt;fk → formulario_opcion&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;" style="rounded=1;absoluteArcSize=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#FFFCF2;strokeColor=#C89B2C;strokeWidth=1.1;fontColor=#172033;fontSize=9;align=left;verticalAlign=top;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="45" y="430" width="1110" height="225" as="geometry" />
+        </mxCell>
+        <mxCell id="P_note" value="&lt;b&gt;catálogo s03:&lt;/b&gt; formulario_opcion contiene 15 registros activos: s03_am01=3, s03_am02=4, s03_am03=3, s03_am04=2 y s03_am06=3. django filtra por variable y activo=true para desplegar cada select." style="rounded=1;absoluteArcSize=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#D0D5DD;strokeWidth=1;fontColor=#475467;fontSize=9;align=left;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="45" y="670" width="1110" height="42" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

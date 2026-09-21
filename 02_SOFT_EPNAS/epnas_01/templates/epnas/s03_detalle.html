@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Detalle S03 | EPNAS{% endblock %}
+{% block content %}
+<div class="page-heading">
+    <div>
+        <p class="eyebrow">Registro guardado</p>
+        <h1>Sección S03</h1>
+        <p class="muted mono">{{ registro.id_formulario }}</p>
+    </div>
+    <a class="btn primary" href="{% url 'epnas:editar_s03' registro.pk %}">Editar</a>
+</div>
+
+<section class="card detail-grid">
+    <div><span>Unicódigo</span><strong>{{ registro.unicodigo }}</strong></div>
+    <div><span>Estado</span><strong>{{ registro.estado }}</strong></div>
+    <div><span>Usuario</span><strong>{{ registro.usuario|default:"-" }}</strong></div>
+    <div><span>Fecha</span><strong>{{ registro.fecha_registro|date:"Y-m-d H:i" }}</strong></div>
+</section>
+
+{% if respuesta %}
+<section class="card">
+    <h2>Respuestas</h2>
+    <div class="detail-grid">
+        <div><span>S03_AM01</span><strong>{{ respuesta.s03_am01.descripcion }}</strong></div>
+        <div><span>S03_AM02</span><strong>{{ respuesta.s03_am02.descripcion }}</strong></div>
+        <div><span>S03_AM03</span><strong>{{ respuesta.s03_am03.descripcion }}</strong></div>
+        <div><span>S03_AM04</span><strong>{{ respuesta.s03_am04.descripcion }}</strong></div>
+        <div><span>S03_AM05</span><strong>{{ respuesta.s03_am05 }} horas</strong></div>
+        <div><span>S03_AM06</span><strong>{{ respuesta.s03_am06.descripcion }}</strong></div>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

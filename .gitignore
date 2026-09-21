@@ -1,11 +1,29 @@
-02_data/
-03_configuraciones/config.yml
-
+# Python / Django
 __pycache__/
 *.py[cod]
+*.sqlite3
+.venv/
+venv/
+staticfiles/
+media/
 *.log
 
+# Entornos y credenciales
 .env
+*.env
+01_ESTRUCTURAS_BDD_EPNAS/03_configuraciones/
+
+# Temporales de Office y sistema
+~$*
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
 .Rhistory
 .RData
 .Rproj.user/
+
+# Respaldos locales de repositorios anidados
+.nested_git_backups/

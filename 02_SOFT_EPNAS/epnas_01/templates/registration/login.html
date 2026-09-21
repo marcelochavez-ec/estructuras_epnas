@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Ingreso | EPNAS{% endblock %}
+{% block content %}
+<div class="login-shell">
+    <section class="card login-card">
+        <p class="eyebrow">EPNAS</p>
+        <h1>Ingreso al sistema</h1>
+        <p class="muted">Use su usuario autorizado para registrar o editar información.</p>
+        <form method="post" class="form-grid one-col">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn primary" type="submit">Ingresar</button>
+        </form>
+    </section>
+</div>
+{% endblock %}

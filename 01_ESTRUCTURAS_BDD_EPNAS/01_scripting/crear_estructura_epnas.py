@@ -16,6 +16,8 @@
 #   pip install sqlalchemy "psycopg[binary]"
 # ============================================================
 
+import os
+
 from sqlalchemy import create_engine, text
 from sqlalchemy.engine import URL
 
@@ -24,12 +26,12 @@ from sqlalchemy.engine import URL
 # 1. CONEXIÓN POSTGRESQL
 # ============================================================
 
-DB_USER = "marcelo_chavez"
-DB_PASSWORD = "*Marcelo.2025*-"
-DB_HOST = "10.64.100.191"
-DB_PORT = 5432
-DB_NAME = "productos_bm"
-DB_SCHEMA = "epnas"
+DB_USER = os.getenv("EPNAS_DB_USER", "")
+DB_PASSWORD = os.getenv("EPNAS_DB_PASSWORD", "")
+DB_HOST = os.getenv("EPNAS_DB_HOST", "127.0.0.1")
+DB_PORT = int(os.getenv("EPNAS_DB_PORT", "5432"))
+DB_NAME = os.getenv("EPNAS_DB_NAME", "productos_bm")
+DB_SCHEMA = os.getenv("EPNAS_DB_SCHEMA", "epnas")
 
 
 DATABASE_URL = URL.create(

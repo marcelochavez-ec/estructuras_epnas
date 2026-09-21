@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Inicio | EPNAS{% endblock %}
+{% block content %}
+<div class="page-heading">
+    <div>
+        <p class="eyebrow">EPNAS</p>
+        <h1>Formularios registrados</h1>
+        <p class="muted">Sección S03: Acceso y Movilización.</p>
+    </div>
+    <a class="btn primary" href="{% url 'epnas:nuevo_s03' %}">+ Nueva respuesta S03</a>
+</div>
+
+<section class="card">
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Unicódigo</th>
+                    <th>Estado</th>
+                    <th>Fecha</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in formularios %}
+                <tr>
+                    <td class="mono">{{ item.id_formulario }}</td>
+                    <td>{{ item.unicodigo }}</td>
+                    <td><span class="badge">{{ item.estado }}</span></td>
+                    <td>{{ item.fecha_registro|date:"Y-m-d H:i" }}</td>
+                    <td><a href="{% url 'epnas:detalle_s03' item.pk %}">Ver</a></td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="5">Aún no existen formularios registrados por este usuario.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

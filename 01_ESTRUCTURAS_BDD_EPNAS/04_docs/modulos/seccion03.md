@@ -14,7 +14,8 @@ Arquitectura de catalogos para variables de la seccion S03.
 ## 3. Archivos modificados o creados
 
 1. `01_scripting/Seccion03.py`
-2. `04_docs/modulos/seccion03.md`
+2. `01_scripting/crear_estructura_epnas.py`
+3. `04_docs/modulos/seccion03.md`
 
 ## 4. Flujo general paso a paso
 
@@ -33,7 +34,14 @@ Arquitectura de catalogos para variables de la seccion S03.
 
 1. Archivo: `02_data/EJEMPLO_SECCION_s03.xlsx`.
 2. Hoja: `s03`.
-3. Variables obligatorias:
+3. Variables de entorno para `crear_estructura_epnas.py`:
+   1. `EPNAS_DB_USER`
+   2. `EPNAS_DB_PASSWORD`
+   3. `EPNAS_DB_HOST`
+   4. `EPNAS_DB_PORT`
+   5. `EPNAS_DB_NAME`
+   6. `EPNAS_DB_SCHEMA`
+4. Variables obligatorias:
    1. `s03_am01`
    2. `s03_am02`
    3. `s03_am03`
@@ -82,9 +90,10 @@ Arquitectura de catalogos para variables de la seccion S03.
 
 ## 11. Consultas SQL o logica ETL relevante
 
-1. No se ejecutan consultas SQL.
+1. `Seccion03.py` no ejecuta consultas SQL.
 2. La logica ETL principal crea tablas de arquitectura con `pd.DataFrame`.
 3. La frecuencia original se calcula con `value_counts` para analizar la distancia entre el dato fuente y el catalogo oficial.
+4. `crear_estructura_epnas.py` construye la URL PostgreSQL con variables de entorno y ejecuta DDL para crear schema, tablas, restricciones e indices de la seccion S03.
 
 ## 12. Dependencias
 
@@ -98,6 +107,7 @@ Arquitectura de catalogos para variables de la seccion S03.
 1. Se valida existencia del archivo fuente.
 2. Se valida presencia de las seis variables obligatorias.
 3. Se conserva una hoja de frecuencias originales para revisar casos como textos combinados, `NR` o `NO APLICA`.
+4. Se valido que la configuracion de conexion del script de estructura no publique usuario, clave ni host institucional de forma hardcodeada.
 
 ## 14. Pruebas sugeridas o ejecutadas
 
@@ -123,6 +133,7 @@ Arquitectura de catalogos para variables de la seccion S03.
 6. Se dejo `s03_am06` solo con `Primer orden`, `Segundo orden` y `Tercer orden`.
 7. Se agrego una propuesta de tablas para Django/PostgreSQL.
 8. Se ajusto el valor de `seccion` a `s03` en minuscula y se corrigio su uso en la tabla de frecuencias.
+9. Se cambio `crear_estructura_epnas.py` para leer credenciales PostgreSQL desde variables de entorno antes de sincronizar el proyecto completo en GitHub.
 
 ## 17. Pendientes o recomendaciones futuras
 
